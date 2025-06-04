@@ -1,0 +1,152 @@
+ @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+    :root {
+      --primary-color: #4a90e2;
+      --secondary-color: #50e3c2;
+      --background-color: #1a1a2e;
+      --button-bg: #16213e;
+      --button-hover-bg: #0f3460;
+      --text-color: #eaeaea;
+      --display-bg: #0f3460;
+      --shadow-color: rgba(30, 136, 229, 0.6);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--background-color);
+      font-family: 'Roboto Mono', monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      user-select: none;
+    }
+
+    .calculator {
+      background: linear-gradient(145deg, #16213e, #0f3460);
+      border-radius: 15px;
+      box-shadow:
+        0 0 8px var(--shadow-color),
+        inset 0 0 15px #1a1a2e;
+      width: 540px;
+      padding: 30px 30px 35px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .display {
+      background: var(--display-bg);
+      border-radius: 12px;
+      padding: 35px 25px;
+      font-size: 3.6rem;
+      color: var(--text-color);
+      height: 110px;
+      line-height: 1.1;
+      text-align: right;
+      white-space: nowrap;
+      overflow-x: auto; 
+      scrollbar-width: none;
+      -ms-overflow-style: none;  
+      box-shadow: inset 0 0 10px #0f3460;
+      user-select: text;
+      transition: font-size 0.2s ease;
+      position: relative;
+    }
+   
+    .display::-webkit-scrollbar {
+      display: none;
+    }
+    
+    .display[title]:hover::after {
+      content: attr(title);
+      position: absolute;
+      bottom: 120%;
+      right: 10px;
+      background: var(--display-bg);
+      padding: 5px 10px;
+      border-radius: 8px;
+      color: var(--text-color);
+      white-space: pre-wrap;
+      font-size: 1.2rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.7);
+      z-index: 10;
+      max-width: 90%;
+      pointer-events: none;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    button {
+      background: var(--button-bg);
+      border: none;
+      border-radius: 10px;
+      padding: 24px 0;
+      font-size: 1.8rem;
+      color: var(--text-color);
+      cursor: pointer;
+      box-shadow:
+        0 4px 8px #000a,
+        inset 0 -3px 0 #101d40;
+      transition: background-color 0.3s ease, transform 0.15s ease;
+      user-select: none;
+    }
+
+    button:hover {
+      background: var(--button-hover-bg);
+    }
+
+    button:active {
+      transform: scale(0.95);
+      box-shadow: inset 0 3px 8px #101d40;
+    }
+
+    button.operator {
+      color: var(--secondary-color);
+      font-weight: 600;
+    }
+
+    button.equal {
+      grid-row: 5;
+      grid-column: 4;
+      background: var(--secondary-color);
+      color: var(--background-color);
+      font-weight: 700;
+      font-size: 2rem;
+      box-shadow: 0 5px 15px var(--secondary-color);
+      height: 100%;
+    }
+
+    button.equal:hover {
+      background: #39d6bb;
+      box-shadow: 0 7px 20px #39d6bb;
+    }
+
+    button.clear {
+      background: #e94560;
+      font-weight: 700;
+      color: #fff;
+      box-shadow: 0 5px 15px #e94560;
+    }
+
+    button.clear:hover {
+      background: #f75f78;
+      box-shadow: 0 7px 20px #f75f78;
+    }
+
+    button.zero {
+      grid-column: 1 / span 2;
+      grid-row: 5;
+    }
+
+    button.decimal {
+      grid-column: 3;
+      grid-row: 5;
+    }
